@@ -1,6 +1,18 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+## Roles of P, I, and D
+
+### Proportional gain (P)
+The role of proportional gain is to steer the car in proportion to the existing error (CTE). After some trial and error a gain value of 0.225 was found. If we only used proportional gain the car will overshoot and oscillate.
+
+### Integral gain (I)
+The role of the integral gain is to compensate systematic bias. An integral term increases action in relation not only to the error but also the time for which it has persisted. So, if applied gains are not enough to bring the error to zero, this correction will be increased as time passes. A pure "I" controller could bring the error to zero, however, it would be both slow reacting at the start (because action would be small at the beginning, needing time to get significant), but it can also suffer from brutal corrections over time since it accumulates indefinitely over time. There seems to be no systematic bias in the simulator, so i set this to zero.
+
+### Derivative gain (D)
+A derivative term does not consider the error (meaning it cannot bring it to zero), but the rate of change of error (CTE), trying to bring this rate to zero. It aims at flattening the error trajectory into a horizontal line, damping the changes applied by the proportional gain term, and so reduces overshoot. Once again trial and error we set this to 3.0
+
+
 ---
 
 ## Dependencies
